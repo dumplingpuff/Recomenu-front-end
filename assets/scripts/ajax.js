@@ -6,11 +6,12 @@ module.exports = true;
 
 let getEntries = function(){
   $.ajax({
-    url: "http://localhost:3000.com/entries",
+    url: "http://localhost:3000/entries",
     method: 'GET',
     dataType: 'json'
   }).done(function(entries){
     displayEntries(entries);
+    console.log(entries);
   });
 };
 
@@ -22,5 +23,7 @@ let displayEntries = function(entries){
 
 
 $(document).ready(function() {
+  console.log("you're in.");
   getEntries();
+
 });
