@@ -6,4 +6,9 @@
 // use require without a reference to ensure a file is bundled
 require('./example');
 
-const Ajax = require('./ajax');
+const Entry_ajax = require('./entry-ajax');
+
+const Bam = { baseUrl: "http://localhost:3000" }
+
+
+module.exports = true;
