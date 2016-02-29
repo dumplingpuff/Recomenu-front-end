@@ -6,9 +6,15 @@
 // use require without a reference to ensure a file is bundled
 require('./example');
 
-const Entry_ajax = require('./entry-ajax');
-
-const Bam = { baseUrl: "http://localhost:3000" }
+let ajax = require('./ajax');
 
 
-module.exports = true;
+
+
+//
+// $(document).ready(function() {
+//   // entryAjax.getEntries();
+//   // $('#sign-in').on('submit', logInAjax.signInUser);
+//   // $('#sign-out').on('click', logInAjax.signOutUser);
+//
+// });

@@ -37,29 +37,29 @@ let getEntries = function(){
 };
 
 
-let postEntries = function(event) {
-  $.ajax({
-    url: holder.baseUrl + '/entries',
-    method: 'POST',
-    contentType: false,
-    processData: false,
-    data: event
-  })
-  .done(function(data) {
-    console.log('Running post entries');
-    logResponseBody(data);
-  }).fail(function(jqxhr) {
-    logRequestError(jqxhr);
-  });
-};
+// let postEntries = function(e) {
+//   e.preventDefault();
+//   let entry = new FormData(e.target);
+//   $.ajax({
+//     url: holder.baseUrl + '/entries',
+//     method: 'POST',
+//     headers: {
+//       Authorization: 'Token token=' + holder.user.token,
+//     },
+//     contentType: false,
+//     processData: false,
+//     data: entry
+//   })
+//   .done(function(data) {
+//     console.log('Running post entries');
+//     // logResponseBody(data);
+//     console.log(data);
+//   }).fail(function(jqxhr) {
+//     console.log(jqxhr);
+//     // logRequestError(jqxhr);
+//   });
+// };
 
-let init = function() {
-  $('.post-entry').on('submit', function(e) {
-    e.preventDefault();
-    let entry = new FormData(event.target);
-    postEntries(entry);
-  });
-};
 
 // let deleteEntries = function() {
 //     $.ajax({
@@ -77,17 +77,15 @@ let init = function() {
 //     logRequestError(jqxhr);
 //   });
 // };
-
-$(document).ready(function() {
-  console.log("you're in.");
-  getEntries();
-  init();
-  $('.test-p').on('click', function(){
-    let hi =  "[data-van =" + $(this).attr('data-car') + "]";
-
-    console.log(hi);
-    $(hi).modal('show');
-  });
-
-
-});
+//
+// $(document).ready(function() {
+//   console.log("you're in.");
+//   getEntries();
+//   init();
+//   $('.test-p').on('click', function(){
+//     let hi =  "[data-van =" + $(this).attr('data-car') + "]";
+//
+//     console.log(hi);
+//     $(hi).modal('show');
+//   });
+// });

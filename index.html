@@ -8,134 +8,83 @@
     </head>
     <body class="container-fluid">
 
+      <!-- Nav Bar -->
       <nav class="navbar navbar-default">
         <div class="container">
-          <button type="button" class="btn btn-default navbar-btn">Sign in</button>
-          <button type="button" class="btn btn-default navbar-btn">Sign out</button>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#sign-in-modal">Sign in</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="diffModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <form class="form-inline" id='sign-in'>
+                    <div class="form-group">
+                      <label class="sr-only" for="emailInput">Username</label>
+                      <input type="text" name="credentials[email]" class="form-control" id="emailInput" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only" for="regPass">Password</label>
+                      <input type="password" name="credentials[password]" class="form-control" id="regPass" placeholder="Password">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Sign In</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+</div>
+
+          <button type="button" id='sign-out' class="btn btn-default navbar-btn">Sign out</button>
         </div>
       </nav>
+      <!-- End of Nav Bar -->
+
+
 
 
       <h1>Recomenu!</h1>
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-md post-entry" data-toggle="modal" data-target="#myModal">
+      <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#post-entry-modal">
         Post Entry
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal fade" id="post-entry-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Make an Experience</h4>
+              <h4 class="modal-title">Make an Experience</h4>
             </div>
             <div class="modal-body">
-              <form class="post-entry">
-                <div>
-                    <label for="restaurant">Name:</label>
-                    <input type="text" name='restaurant' id="restaurant" />
-                    <label for="time">Time:</label>
-                    <input type="text" name="time" id="time" />
-                </div>
-                <div>
-                    <label for="location">Location:</label>
-                    <input type="text" name="location" id="location" />
-                </div>
-                <div>
-                    <label for="dish">Dish:</label>
-                    <input type="text" name="dish" id="dish" />
-                    <label for="rating">Rating:</label>
-                    <input type="text" name="rating" id="rating" />
-                </div>
-                <div>
-                    <label for="content">My Experience:</label>
-                    <textarea id="content"></textarea>
-                </div>
-              </div>
+              <form id='post-entry' onsubmit="this.reset();">
+                <label for="restaurant-entry">Restaurant</label>
+                <input type="text" name="entry[restaurant]" id="restaurant-entry"><br>
+                Time: <input type='text' name="entry[time]"><br>
+                Dish: <input type="text" name="entry[dish]"><br>
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
-      <div class="my-entries">
-        <!-- Button trigger modal -->
-          <div class="test-p" data-car="3" data-toggle="modal" data-target="[data-van=3]">
-            <h1>Pastoral</h1>
-          </div>
 
-          <!-- Modal -->
-          <div class="modal fade" data-van="3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                  YAY1
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class='my-entries'>
+      <div>
 
-        <!-- Button trigger modal -->
-          <div class="test-p" data-car="2" data-toggle="modal" data-target="pastoral">
-            <h1>Pastoral</h1>
-          </div>
-
-          <!-- Modal -->
-          <div class="modal fade" data-van="2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                  BOOBS 2
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <!-- Button trigger modal -->
-          <div class="test-p" data-car="3" data-toggle="modal" data-target="pastoral">
-            <h1>Pastoral</h1>
-          </div>
-
-          <!-- Modal -->
-          <div class="modal fade" data-van="3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                  POOP 3
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-      </div>
     </body>
 </html>
