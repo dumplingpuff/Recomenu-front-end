@@ -1,9 +1,28 @@
 
 
-<div class='entries' data-id="{{id}}">
-  {{id}}
-  {{restaurant}}
 
 
 
+<div class="row">
+  <div class="col-md-8">
+    <div class="media">
+      <div class='entries'>
+        <div class='media-body'>
+          <h1>{{restaurant}}</h1>
+          <p>
+            {{location}}
+          </p>
+          <p>{{time}}</p>
+          <p>{{dish}}</p>
+          <p>{{rating}}</p>
+          <p>
+            {{content}}
+          </p>
+
+          <button type="button" id="test" class="btn btn-info edit-entry" data-toggle="modal" data-target="#edit-entry-modal" data-edit-id="{{id}}">Edit</button>
+          <button type="button" id="test" class="btn btn-danger delete-entry" data-id="{{id}}">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
