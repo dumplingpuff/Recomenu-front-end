@@ -1,11 +1,13 @@
 'use strict';
 
+let index = require('./index');
+
 let constant = require('./constant');
 
 
 
 let logResponseBody = function(responseBody) {
-  console.table(responseBody);
+  console.log(responseBody);
 };
 
 let logRequestError = function(requestObject) {
@@ -15,6 +17,50 @@ let logRequestError = function(requestObject) {
 let hideModal = function() {
   $('.modal').modal('hide');
 };
+
+//
+// let toggleAdmin = function() {
+//   if(constant.holder.user['admin']) {
+//     $('.admin').show();
+//
+//   }
+//   else {
+//     $('.admin').hide();
+//     // $('.suggest-bttn').addClass('hide');
+//   }
+// };
+
+let toggleLogIn = function() {
+  if(constant.holder.user) {
+    $('.sign-btns').hide();
+    $('.sign-out-bttn').show();
+  }
+  else {
+    $('.sign-btns').show();
+    $('.sign-out-bttn').hide();
+  }
+};
+
+
+let signUpUser = function(e) {
+  e.preventDefault();
+  var formData = new FormData(e.target);
+  $.ajax({
+    url: constant.holder.baseUrl + '/sign-up',
+    method: 'POST',
+    contentType: false,
+    processData: false,
+    data: formData,
+  }).done(function(data) {
+    logResponseBody(data);
+    hideModal();
+    $('#sign-up input').val('');
+    // $('.admin').removeClass('hide');
+  }).fail(function(jqxhr) {
+    logRequestError(jqxhr);
+  });
+};
+
 
 let signInUser = function(e) {
   e.preventDefault();
@@ -27,10 +73,15 @@ let signInUser = function(e) {
     data: formData,
   }).done(function(data) {
     constant.holder.user = data.user;
+    // console.log(constant.holder.user['admin']);
+    toggleLogIn();
+    // toggleAdmin();
     logResponseBody(data);
     hideModal();
-    $('#sign-in input').val('');
+    $('.modal').val('');
+    console.log(constant.holder);
   }).fail(function(jqxhr) {
+    $('.modal').val('');
     logRequestError(jqxhr);
   });
 };
@@ -47,11 +98,31 @@ let signOutUser = function(e) {
       processData: false,
     }).done(function(data) {
       logResponseBody(data);
+      constant.holder.user= '';
+      toggleLogIn();
+      // toggleAdmin();
     }).fail(function(jqxhr) {
       logRequestError(jqxhr);
     });
 };
 
+
+
+let getSuggestId = function(e) {
+
+};
+
+let vote = function(e) {};
+
+
+
+
+let displayEntries = function(response){
+  let entries = response.entries;
+  let entryListingTemplate = require('./entry-listing.handlebars');
+  // $('.my-entries').html('');
+    $('.my-entries').html(entryListingTemplate({entries}));
+};
 
 
 let getEntries = function(){
@@ -65,6 +136,56 @@ let getEntries = function(){
     logRequestError(jqxhr);
   });
 };
+
+
+let displaySuggestions = function(response){
+  let suggestions = response.suggestions;
+  // debugger;
+  // $('.suggestions').html('');
+  let suggestionListingTemplate = require('./suggestion-listing.handlebars');
+
+    $('.suggestions').html(suggestionListingTemplate({suggestions}));
+    getEntries();
+};
+
+
+
+let getSuggestions = function() {
+  $.ajax({
+    url: constant.holder.baseUrl + '/suggestions',
+    method: 'GET',
+    dataType: 'json'
+  }).done(function(suggestions){
+    displaySuggestions(suggestions);
+  }).fail(function(jqxhr) {
+    logRequestError(jqxhr);
+  });
+};
+
+
+let postSuggestion = function(e) {
+  e.preventDefault();
+  let suggestion = new FormData(e.target);
+  $.ajax({
+    url: constant.holder.baseUrl + '/suggestions',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + constant.holder.user.token,
+    },
+    processData: false,
+    contentType: false,
+    data: suggestion
+  })
+  .done(function(data) {
+    logResponseBody(data);
+    hideModal();
+    $('#suggestion-modal input').val('');
+    getSuggestions();
+  }).fail(function(jqxhr) {
+    logRequestError(jqxhr);
+  });
+};
+
 
 
 let postEntries = function(e) {
@@ -90,18 +211,20 @@ let postEntries = function(e) {
   });
 };
 
-let displayEntries = function(response){
-  let entries = response.entries;
-  let entryListingTemplate = require('./entry-listing.handlebars');
-    $('.my-entries').html(entryListingTemplate({entries}));
+
+
+let getId = function(e) {
+  let id = $(e.target).attr('data-edit-id');
+  $('.edit-entry-submit').attr('data-edit-id', id);
+  let a = $('.edit-entry-submit').attr('data-edit-id');
+  console.log(a);
 };
 
-
-let editEntries = function(e, i){
+let editEntries = function(e){
   e.preventDefault();
   let entry = new FormData(e.target);
   $.ajax({
-    url: constant.holder.baseUrl + '/entries/' + i,
+    url: constant.holder.baseUrl + '/entries/' + $('.edit-entry-submit').attr('data-edit-id'),
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + constant.holder.user.token,
@@ -109,13 +232,15 @@ let editEntries = function(e, i){
     contentType: false,
     processData: false,
     data: entry
-  }).done(function(data) {
+  }
+  ).done(function(data) {
     logResponseBody(data);
     hideModal();
     $('#post-entry input').val('');
     getEntries();
   }).fail(function(jqxhr) {
     logRequestError(jqxhr);
+    console.log($('.edit-entry-submit').attr('data-edit-id'));
   });
 };
 
@@ -129,31 +254,53 @@ let deleteEntries = function(e) {
     contentType: false,
     processData: false,
   }).done(function(data) {
+    console.log('deleted');
     logResponseBody(data);
+    getEntries();
   })
   .fail(function(jqxhr) {
     logRequestError(jqxhr);
   });
 };
 
-let id;
 
-let getId = function(e) {
-  id = $(e.target).attr('data-edit-id');
-  console.log(id);
-};
+
+
+
+
 
 $(document).ready(function(){
-  getEntries();
-  $('#sign-in').on('submit', signInUser);
-  $('#post-entry').on('submit',postEntries);
-  $('.my-entries').on('click','.delete-entry', deleteEntries);
+  getSuggestions();
+
+  toggleLogIn();
+  $('.test').hide();
+  $('#sign-up').on('submit', function(e){
+    e.preventDefault();
+    signUpUser(e);
+  });
+  $('#sign-in').on('submit', function(e) {
+    e.preventDefault();
+    signInUser(e);
+  });
+  $('#sign-out').on('click', signOutUser);
+  $('#post-entry').on('submit', function(e) {
+    e.preventDefault();
+    postEntries(e);
+  });
+  $('.my-entries').on('click','.delete-entry', function(e) {
+    deleteEntries(e);
+    $(e.target).remove();
+  });
   $('.my-entries').on('click', '.edit-entry', getId);
   $('#edit-entry').on('submit', function(e) {
-    console.log(id);
-    editEntries(e, id);
+    e.preventDefault();
+    editEntries(e);
   });
-
+  $('#post-suggest').on('submit', function(e) {
+    e.preventDefault();
+    postSuggestion(e);
+  });
+  // toggleAdmin();
 });
 
 
