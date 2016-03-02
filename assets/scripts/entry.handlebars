@@ -1,9 +1,19 @@
-<h1>{{../helpers/title}} <small>{{restaurant}}</small></h1>
+<div class="row">
+  <div class="col-md-8">
+    <div class="media container">
+      <div class='entries'>
+        <div class='media-body' data-rating='{{rating}}'>
+          <h1>{{restaurant}}</h1>
+          <h4>Location: {{location}}</h4>
+            <p>Time: {{time}} Dish I ate: {{dish}}</p>
+          <p>
+            {{content}}
+          </p>
 
-<div>
-  {{#if location}}
-    {{location}}
-  {{else}}
-    No description.
-  {{/if}}
+          <button type="button" class="btn btn-info edit-entry suggest-bttn" data-toggle="modal" data-target="#edit-entry-modal" data-edit-id="{{id}}">Edit</button>
+          <button type="button" class="btn btn-danger delete-entry suggest-bttn" data-id="{{id}}">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

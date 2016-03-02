@@ -6,35 +6,227 @@
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
+
     <body class="container-fluid">
 
-      <h1>Recomenu!</h1>
+      <!-- Nav Bar -->
+      <nav class="navbar navbar-default">
+        <div class="container">
 
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-md post-entry" data-toggle="modal" data-target="#myModal">
-        Post Entry
-      </button>
 
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <!-- Button trigger sign in modal -->
+          <button type="button" class="btn btn-default navbar-btn sign-btns" data-toggle="modal" data-target="#sign-in-modal">Sign In</button>
+                    <!--         Sign In Modal         -->
+          <!-- Modal -->
+          <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="diffModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <form class="form-inline" id='sign-in'>
+                    <div class="form-group">
+                      <label class="sr-only" for="emailInput">Username</label>
+                      <input type="text" name="credentials[email]" class="form-control" id="emailInput" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only" for="regPass">Password</label>
+                      <input type="password" name="credentials[password]" class="form-control" id="regPass" placeholder="Password">
+                     </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary sign-btns">Sign In</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Button trigger sign in modal -->
+          <button type="button" class="btn btn-default navbar-btn sign-btns" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
+                    <!--         Sign Up Modal         -->
+          <!-- Modal -->
+          <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="diffModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <form class="form-inline" id='sign-up'>
+                    <div class="form-group">
+                      <label for="emailInput">Username</label>
+                      <input type="text" name="credentials[email]" class="form-control" id="emailInput" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <label for="regPass">Password</label>
+                      <input type="password" name="credentials[password]" class="form-control" id="regPass" placeholder="Password">
+                      <label for="confirmPass">Confirm Password</label>
+                      <input type="password" name="credentials[password_confirmation]" class="form-control" id="confirmPass" placeholder="Confirm Password">
+                     </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Sign Up!</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <button type="button" id='sign-out' class="btn btn-default navbar-btn sign-out-bttn">Sign out</button>
+          <!-- Button trigger post entry modal -->
+          <button type="button" class="btn btn-primary btn-md admin" data-toggle="modal" data-target="#post-entry-modal">
+            Post Entry
+          </button>
+
+                              <!--          Post Modal      -->
+          <div class="modal fade" id="post-entry-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Make an Experience</h4>
+                </div>
+                <div class="modal-body">
+                  <form id='post-entry'>
+                    <label for="restaurant-entry">Restaurant</label>
+                    <input type="text" name="entry[restaurant]" class="form-control" id="restaurant-entry"><br>
+                    <label for="time-entry">Time</label>
+                    <input type='text' name="entry[time]" class="form-control" id="time-entry"><br>
+
+                    <label for="location-entry">Location</label>
+                    <input type='text' name="entry[location]" class="form-control" id="location-entry"><br>
+
+                    <label for="dish-entry">Dish</label>
+                    <input type="text" name="entry[dish]" class="form-control" id="dish-entry"><br>
+
+                    <label for="rating-entry">Rating</label>
+                    <input type="text" name="entry[rating]" class="form-control" id="rating-entry"><br>
+                    <label for="content-entry"></label>
+                    <div>
+                      <label for="rating-entry" class="label-control">Write your experience!:</label>
+                      <textarea name="entry[content]" class="form-control" id="content-entry"></textarea>
+                    </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- End of Nav Bar -->
+
+
+      <!-- Content -->
+
+      <div class="jumbotron">
+      <h1>Food Blog</h1>
+      </div>
+
+      <div class="container">
+        <div class='my-entries'>
+        </div>
+            <!--   Start of panel Suggestions -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Suggestions</h3>
+          </div>
+                <!-- Panel Body start -->
+          <div class="panel-body">
+                      <!-- Button trigger post suggestion modal -->
+            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#suggestion-modal">
+              Post Suggestion
+            </button>
+                              <!--          Post Suggestion Modal      -->
+          <div class="modal fade" id="suggestion-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Tell Me Where to Eat</h4>
+                </div>
+                <div class="modal-body">
+                  <form id='post-suggest'>
+                    <label for="restaurant-entry">Name</label>
+                    <input type="text" name="suggestion[name]" class="form-control" id="name-entry"><br>
+
+                    <label for="restaurant-entry">Restaurant</label>
+                    <input type="text" name="suggestion[restaurant]" class="form-control" id="restaurant-entry"><br>
+
+                    <label for="location-entry">Location</label>
+                    <input type='text' name="suggestion[location]" class="form-control" id="location-entry"><br>
+
+                    <label for="dish-entry">Dish</label>
+                    <input type="text" name="suggestion[dish]" class="form-control" id="dish-entry"><br>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!---    End of Modal   -->
+
+          <div class='suggestions'>
+          </div>
+          <!-- Panel Body end-->
+        </div>
+
+
+
+                          <!--        Edit Modal        -->
+      <div class="modal fade" id="edit-entry-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              <h4 class="modal-title">Edit This Entry</h4>
             </div>
             <div class="modal-body">
-            
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <form id='edit-entry'>
+                <label for="restaurant-entry">Restaurant</label>
+                <input type="text" name="entry[restaurant]" class="form-control" id="restaurant-entry"><br>
+
+                <label for="date-entry">Date</label>
+                <input type="text" name="entry[date]" class="form-control" id="date-entry"><br>
+
+                <label for="time-entry">Time</label>
+                <input type='text' name="entry[time]" class="form-control" id="time-entry"><br>
+
+                <label for="location-entry">Location</label>
+                <input type='text' name="entry[location]" class="form-control" id="location-entry"><br>
+
+                <label for="dish-entry">Dish</label>
+                <input type="text" name="entry[dish]" class="form-control" id="dish-entry"><br>
+
+                <label for="rating-entry">Rating</label>
+                <input type="text" name="entry[rating]" class="form-control" id="rating-entry"><br>
+                <label for="content-entry"></label>
+                <div>
+                  <label for="rating-entry" class="label-control">Write your experience!:</label>
+                  <textarea name="entry[content]" class="form-control" id="content-entry"></textarea>
+                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary edit-entry-submit">Submit</button>
+              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="my-entries">
+    </div>
 
-      </div>
     </body>
 </html>
