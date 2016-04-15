@@ -8,12 +8,35 @@ body {
   box-sizing: border-box;
 }
 
-.jumbotron {
-  background: $light-blue;
+
+
+.welcome {
+  background-image: url('~/images/hd-1.jpg');
+  color: $white;
+  height: 300px;
+  text-align: center;
+  width: 100%;
+}
+
+.welcome .first-header {
+  padding-top: 40px;
+}
+
+.welcome h1 {
+  font-family: 'Oswald';
+  font-size: 70px;
+  margin: 0;
+  margin-left: 50px;
+  text-align: left;
+}
+
+.navbar {
+  background-color: black;
+  border-radius: 0;
 }
 
 .media {
-  background: $lavender;
+  border: 1px solid;
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
