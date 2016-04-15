@@ -9,7 +9,7 @@ body {
 }
 
 
-
+// Welcome Banner
 .welcome {
   background-image: url('~/images/hd-1.jpg');
   color: $white;
@@ -30,9 +30,21 @@ body {
   text-align: left;
 }
 
+// Navbar
+
 .navbar {
-  background-color: black;
+  background-color: $black;
   border-radius: 0;
+  text-align: right;
+}
+
+.navbar button {
+  background-color: $black;
+  border-radius: 0;
+  border: none;
+  color: $white;
+  height: 47px;
+  margin: 0;
 }
 
 .media {
@@ -44,7 +56,6 @@ body {
 
 .post-entry {
   margin: 20px;
-
 }
 
 
