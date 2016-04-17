@@ -47,11 +47,27 @@ body {
   margin: 0;
 }
 
-.media {
+// Each entry
+
+.each-entry {
   border: 1px solid;
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
+}
+
+.each-entry h1 {
+  text-align: center;
+}
+
+// Suggestions
+
+.suggestions {
+
+}
+
+.each-suggestion {
+  width: 200px;  
 }
 
 .post-entry {
