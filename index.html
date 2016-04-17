@@ -3,19 +3,40 @@
     <head>
       <title>Lumple Dumple</title>
 
+      <link href='https://fonts.googleapis.com/css?family=Teko' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
 
-    <body class="container-fluid">
+    <body>
+
+      <div class="welcome">
+        <div class="container">
+          <h1 class='first-header'>The</h1>
+          <h1>Lost</h1>
+          <h1>Dumpling</h1>
+        </div>
+      </div>
 
       <!-- Nav Bar -->
-      <nav class="navbar navbar-default">
+      <nav class="navbar">
         <div class="container">
-
 
           <!-- Button trigger sign in modal -->
           <button type="button" class="btn btn-default navbar-btn sign-btns" data-toggle="modal" data-target="#sign-in-modal">Sign In</button>
+
+          <!-- Button trigger sign up modal -->
+          <button type="button" class="btn btn-default navbar-btn sign-btns" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
+
+          <!-- Button trigger sign out modal -->
+          <button type="button" id='sign-out' class="btn btn-default navbar-btn sign-out-bttn">Sign out</button>
+        </nav>
+        <!-- End of Nav Bar -->
+
+                            <!-- Navbar Modals -->
+
                     <!--         Sign In Modal         -->
           <!-- Modal -->
           <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="diffModalLabel">
@@ -44,9 +65,6 @@
             </div>
           </div>
 
-
-          <!-- Button trigger sign in modal -->
-          <button type="button" class="btn btn-default navbar-btn sign-btns" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
                     <!--         Sign Up Modal         -->
           <!-- Modal -->
           <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="diffModalLabel">
@@ -76,13 +94,6 @@
               </div>
             </div>
           </div>
-
-
-          <button type="button" id='sign-out' class="btn btn-default navbar-btn sign-out-bttn">Sign out</button>
-          <!-- Button trigger post entry modal -->
-          <button type="button" class="btn btn-primary btn-md admin" data-toggle="modal" data-target="#post-entry-modal">
-            Post Entry
-          </button>
 
                               <!--          Post Modal      -->
           <div class="modal fade" id="post-entry-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -122,27 +133,26 @@
             </div>
           </div>
         </div>
-      </nav>
-      <!-- End of Nav Bar -->
+
+        <!-- End of Navbar modals -->
 
 
       <!-- Content -->
 
-      <div class="jumbotron">
-      <h1>Food Blog</h1>
-      </div>
-
       <div class="container">
+        <button type="button" class="btn btn-primary btn-md admin post-entry" data-toggle="modal" data-target="#post-entry-modal">Post Entry</button>
         <div class="row">
-
-        <div class='my-entries col-md-6'>
-        </div>
-            <!--   Start of panel Suggestions -->
-        <div class="col-md-4 col-md-push-3">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Suggestions</h3>
+          <!-- Button trigger post entry modal -->
+          <div class='my-entries col-md-6'>
           </div>
+
+
+            <!--   Start of panel Suggestions -->
+          <div class="col-md-4 col-md-push-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Suggestions</h3>
+            </div>
                 <!-- Panel Body start -->
           <div class="panel-body">
                       <!-- Button trigger post suggestion modal -->
@@ -181,8 +191,9 @@
           </div>
           <!---    End of Modal   -->
 
-          <div class='suggestions'>
-          </div>
+            <div class="suggestions">
+
+            </div>
         </div>
           <!-- Panel Body end-->
         </div>

@@ -5,21 +5,74 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 
 body {
-  background: $deep-purple;
   box-sizing: border-box;
 }
 
-.jumbotron {
-  background: $light-blue;
+
+// Welcome Banner
+.welcome {
+  background-image: url('~/images/hd-1.jpg');
+  color: $white;
+  height: 300px;
+  text-align: center;
+  width: 100%;
 }
 
-.media {
-  background: $lavender;
+.welcome .first-header {
+  padding-top: 40px;
+}
+
+.welcome h1 {
+  font-family: 'Oswald';
+  font-size: 70px;
+  margin: 0;
+  margin-left: 50px;
+  text-align: left;
+}
+
+// Navbar
+
+.navbar {
+  background-color: $black;
+  border-radius: 0;
+  text-align: right;
+}
+
+.navbar button {
+  background-color: $black;
+  border-radius: 0;
+  border: none;
+  color: $white;
+  height: 47px;
+  margin: 0;
+}
+
+// Each entry
+
+.each-entry {
+  border: 1px solid;
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
 }
 
+.each-entry h1 {
+  text-align: center;
+}
+
+// Suggestions
+
+.suggestions {
+
+}
+
+.each-suggestion {
+  width: 200px;  
+}
+
+.post-entry {
+  margin: 20px;
+}
 
 
 .hide {
