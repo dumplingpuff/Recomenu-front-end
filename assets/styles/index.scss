@@ -3,6 +3,13 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import 'color';
 
+#test {
+  width: 500px;
+}
+
+.pac-container {
+  z-index: 1051 !important;
+}
 
 body {
   box-sizing: border-box;
@@ -67,7 +74,7 @@ body {
 }
 
 .each-suggestion {
-  width: 200px;  
+  width: 200px;
 }
 
 .post-entry {

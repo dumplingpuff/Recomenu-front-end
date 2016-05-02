@@ -10,6 +10,8 @@ let constant =require('./constant');
 
 let ajax = require('./ajax');
 
+let places = require('./places')
+
 let toggleAdmin = function() {
   if(constant.holder.user.admin) {
     $('.admin').show();

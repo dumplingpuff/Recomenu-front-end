@@ -265,11 +265,11 @@ let deleteEntries = function(e) {
 
 
 
-
-
-
-
 $(document).ready(function(){
+
+
+
+
   getSuggestions();
 
   toggleLogIn();
