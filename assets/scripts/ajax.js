@@ -1,6 +1,6 @@
 'use strict';
 
-let index = require('./index');
+// let index = require('./index');
 
 let constant = require('./constant');
 
@@ -108,11 +108,11 @@ let signOutUser = function(e) {
 
 
 
-let getSuggestId = function(e) {
-
-};
-
-let vote = function(e) {};
+// let getSuggestId = function(e) {
+//
+// };
+//
+// let vote = function(e) {};
 
 
 

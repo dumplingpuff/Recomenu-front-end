@@ -1,6 +1,6 @@
 'use strict';
 
-let input = document.getElementById('restaurant-entry');
+let input = document.getElementById('find-place');
 
 let options = {
   types: ['establishment']
@@ -8,14 +8,13 @@ let options = {
 
 let autocomplete = new google.maps.places.Autocomplete(input);
 
-function fillInAddress() {
+function fillInPlace() {
   let place = autocomplete.getPlace();
+  console.log(place);
+  document.getElementById('restaurant-entry').value = place.name;
   document.getElementById('location-entry').value = place.formatted_address;
 }
 
 $(document).ready(function() {
-  $('.get-place').on('click', function() {
-    console.log(autocomplete.getPlace());
-  });
-  autocomplete.addListener('place_changed', fillInAddress);
+  autocomplete.addListener('place_changed', fillInPlace);
 });
